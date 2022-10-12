@@ -34,3 +34,28 @@ Widget _listView(BuildContext context){
     );
   }
 ```
+****
+* 自定义带水波纹的button按钮
+
+```
+Ink(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFDE2F21), Color(0xFFEC592F)]),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: InkWell(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+            child: Text(
+              '这是InkWell的点击效果',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          onTap: () {},
+        ),
+      )
+
+```
