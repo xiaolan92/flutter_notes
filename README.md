@@ -59,3 +59,13 @@ Ink(
       )
 
 ```
+***
+
+* Flutter弹起键盘页面布局超限问题
+
+```
+Scaffold(
+   resizeToAvoidBottomInset: false,
+)
+```
+
