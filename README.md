@@ -174,7 +174,7 @@ Colors.primaries
  // 与索引相关
 Colors.primaries[index]
  // 与索引相关
-Colors.primaries[index % Colors.primaries.length
+Colors.primaries[index % Colors.primaries.length]
 
 ```
  
