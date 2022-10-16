@@ -177,5 +177,139 @@ Colors.primaries[index]
 Colors.primaries[index % Colors.primaries.length]
 
 ```
+***
+ * TabBarView 页面中间切换
+ ```
+ class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+
+  final List<String> _tabs = [
+    '语文',
+    '英语',
+    '化学',
+    '物理',
+    '数学',
+    '生物',
+    '体育',
+    '经济',
+  ];
+
+    late TabController  tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: _tabs.length, vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              elevation: 0,
+              expandedHeight: 300,
+              pinned: true,
+              flexibleSpace:FlexibleSpaceBar(
+                 title: Text("demo"),
+              )
+             
+            ),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: StickyTabBarDelegate(
+                child: TabBar(                
+                  isScrollable: true,
+                  controller: tabController,
+                  tabs: _tabs.map((e) => Tab(text: e,)).toList()
+                )
+              )
+            )
+          ];
+        },
+        body: TabBarView(
+          controller: tabController,
+          children: _tabs.map((e) => 
+           MediaQuery.removePadding(
+             removeTop: true,
+             context: context,
+              child: const MyList()
+           )
+          ).toList())
+      ),
+    );
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    tabController.dispose();
+  }
+}
+
+class StickyTabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar child;
+
+  StickyTabBarDelegate({ required this.child});
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Colors.blue,
+      child: child,
+    );
+  }
+
+  @override
+  double get maxExtent => child.preferredSize.height;
+
+  @override
+  double get minExtent => child.preferredSize.height;
+
+  @override
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
+  }
+}
+
+
+
+class MyList extends StatefulWidget {
+  const MyList({super.key});
+
+  @override
+  State<MyList> createState() => _MyListState();
+}
+
+class _MyListState extends State<MyList> with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return  ListView(
+              children: List.generate(50, (index) => Container(
+              height: 50,
+              child: Center(
+                child: Text("${index +1}"),
+              ),
+              color: Colors.primaries[index % Colors.primaries.length],
+            )
+            ),
+            );
+  }
+
+  @override
+  bool get wantKeepAlive =>true;
+}
+
+ 
+ ```
  
 
