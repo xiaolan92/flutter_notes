@@ -165,5 +165,17 @@ class ListDemoState extends State<ListDemo> with AutomaticKeepAliveClientMixin{
  
  ```
 <strong>AutomaticKeepAliveClientMixin 一定要放在缓存的页面 </strong>
+
+***
+* 背景随机颜色
+```
+Colors.primaries
+
+ // 与索引相关
+Colors.primaries[index]
+ // 与索引相关
+Colors.primaries[index % Colors.primaries.length
+
+```
  
 
