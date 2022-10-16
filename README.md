@@ -79,4 +79,91 @@ Scaffold(
   )
  
  ```
+ ***
+ 
+ * 利用TabBar+TabBarView 切换页面并缓存
+ ```
+ 
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+
+
+  final List<String> _tabs = [
+    '语文',
+    '英语',
+    '化学',
+    '物理',
+    '数学',
+    '生物',
+    '体育',
+    '经济',
+  ];
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _tabController = TabController(length: _tabs.length, vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("TabView效果演示"),
+          bottom: TabBar(
+            isScrollable: true,
+            unselectedLabelColor: Colors.red,
+            tabs: _tabs.map((e) => Text(e)).toList(),
+            controller: _tabController,
+          ),
+        ),
+        body: TabBarView(
+            controller: _tabController,
+            children: _tabs
+                .map((e) =>ListDemo())
+                .toList()
+                
+                )
+                );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+}
+
+class ListDemo extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return ListDemoState();
+  }
+}
+
+class ListDemoState extends State<ListDemo> with AutomaticKeepAliveClientMixin{
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return ListView.builder(itemBuilder: (context, index) => Text("内容$index"),itemCount: 100,);
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}
+
+ 
+ ```
+<strong>AutomaticKeepAliveClientMixin 一定要放在缓存的页面 </strong>
+ 
 
