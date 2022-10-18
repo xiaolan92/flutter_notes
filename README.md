@@ -311,5 +311,33 @@ class _MyListState extends State<MyList> with AutomaticKeepAliveClientMixin {
 
  
  ```
+ ***
+ 
+ ```
+ // 防抖
+mixin Debouce {
+  final Duration  duration = const Duration(seconds: 2);
+  late Timer _timer;
+
+  debouce(VoidCallback action){
+     _timer.cancel();
+    _timer = Timer(duration, action);
+  }
+}
+
+// 节流
+mixin Throttle {
+  int _lastTime = 0;
+  final int _interval = 2000;
+  throttle(VoidCallback action){
+    if(DateTime.now().microsecondsSinceEpoch -_lastTime > _interval){
+      action();
+      _lastTime = DateTime.now().microsecondsSinceEpoch;
+    }
+
+  }
+}
+
+ ```
  
 
