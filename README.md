@@ -339,5 +339,20 @@ mixin Throttle {
 }
 
  ```
+
+***
+
+* 阴影
+```
+boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.1),
+                    offset: Offset(0, 0),
+                    blurRadius: 2,
+                    spreadRadius: 0,
+                  )
+                ]
+                
+```
  
 
