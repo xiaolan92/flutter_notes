@@ -354,5 +354,24 @@ boxShadow: const [
                 ]
                 
 ```
- 
+***
+* flutter 复制到剪切板
+1.引入包
+```
+import 'package:flutter/services.dart';
+```
+2.复制文本到剪贴板,该方法无返回值
+```
+Clipboard.setData(ClipboardData(text: "大家好，我是博主 Allen Su"));
+
+```
+3.从剪贴板粘贴文本
+```
+void _doRead() async {
+  var text = await Clipboard.getData(Clipboard.kTextPlain); // 此时的 text 类型为 ClipboardData
+  print("复制的内容是：${text.text}"); // text.text 就是从剪贴板粘贴的内容
+}
+
+```
+
 
