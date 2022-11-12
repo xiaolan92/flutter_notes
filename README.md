@@ -389,4 +389,17 @@ decoration: BoxDecoration(
     )
 ```
 
+***
+
+flutter中TextField设置文本内容后光标在文本末尾
+
+```
+     //改变焦点位置
+     
+  _controller.selection = TextSelection.fromPosition(TextPosition(offset: _controller.text.length));
+  
+  setState(() {});
+
+```
+
 
