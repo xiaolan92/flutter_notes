@@ -402,4 +402,28 @@ flutter中TextField设置文本内容后光标在文本末尾
 
 ```
 
+***
+
+```
+// 自定义单选按钮
+
+Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Radio(
+          value: value,
+          groupValue: groupValue,
+          onChanged: onChanged,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+        SizedBox(width: 8.0), // 调整这个值来减少按钮和文本之间的间距
+        Text(
+          title,
+          style: TextStyle(fontSize: 16), // 可以根据需要调整文本的样式
+        ),
+      ],
+    );
+
+```
+
 
