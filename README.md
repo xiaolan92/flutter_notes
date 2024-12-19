@@ -429,7 +429,7 @@ Row(
 ***
 
 ```
-BottomNavigationBar 去除按钮水波纹和按钮放大
+ // BottomNavigationBar 去除按钮水波纹和按钮放大
 
 theme: ThemeData(
 
