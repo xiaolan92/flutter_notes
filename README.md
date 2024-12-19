@@ -426,4 +426,27 @@ Row(
 
 ```
 
+***
+
+```
+BottomNavigationBar 去除按钮水波纹和按钮放大
+
+theme: ThemeData(
+
+splashColor: Colors.transparent, // 点击时的高亮效果设置为透明
+
+        highlightColor: Colors.transparent, // 长按时的扩散效果设置为透明
+
+）
+
+bottomNavigationBar: BottomNavigationBar(
+
+        type: BottomNavigationBarType.fixed, // 固定类型
+
+……
+
+）
+
+```
+
 
