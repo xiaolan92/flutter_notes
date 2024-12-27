@@ -449,4 +449,16 @@ bottomNavigationBar: BottomNavigationBar(
 
 ```
 
+***
+
+```
+TabBar(
+ dividerColor: Colors.transparent,//去除白色线
+ dividerHeight: 0,
+// TabBar 长按去掉背景色
+ overlayColor:WidgetStateColor.resolveWith((states) =>  Colors.transparent),
+)
+
+```
+
 
