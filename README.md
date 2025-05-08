@@ -461,4 +461,29 @@ TabBar(
 
 ```
 
+***
+
+右上角圆标
+```
+Stack(
+            alignment: const Alignment(1.0, -0.8),
+            children: [
+              IconButton(onPressed: (){
+              }, icon: const Icon(IconUtil.envelope)
+              ),
+              ClipOval(
+                child: Container(
+                  width: 16.w,
+                  height: 16.w,
+                  color: Colors.red,
+                  child: Center(
+                    child: Text('1',style: TextStyle(color: Colors.white,fontSize: 10.sp),),
+                  ),
+                ),
+              )
+            ],
+          ),
+
+```
+
 
